@@ -7,7 +7,6 @@ public:
     Renderer();
     ~Renderer();
 
-    bool IsRunning();
     void Update();
 
     GLFWwindow* const GetWindow() const { return m_pWindow; }

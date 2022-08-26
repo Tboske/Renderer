@@ -27,11 +27,6 @@ Renderer::~Renderer()
     DestroyImGui();
 }
 
-bool Renderer::IsRunning()
-{
-    return !glfwWindowShouldClose(m_pWindow);
-}
-
 void Renderer::Update()
 {
     // Rendering
