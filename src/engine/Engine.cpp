@@ -1,8 +1,8 @@
 #include "Engine.h"
 
 #include "Renderer.h"
+#include "GLFW/glfw3.h"
 #include "GameTime.h"
-#include <memory>
 
 
 void error_callback(int error, const char* description)
@@ -10,7 +10,9 @@ void error_callback(int error, const char* description)
 	spdlog::error("Error: {}\n", description);
 }
 
-Engine::Engine() : m_pRenderer(nullptr)
+Engine::Engine() 
+	: m_pRenderer(nullptr)
+	, m_pGameTime(nullptr)
 {
 	spdlog::set_level(spdlog::level::debug);
 
@@ -33,10 +35,9 @@ Engine::~Engine()
 	glfwTerminate();
 }
 
-
 void Engine::Run()
 {
-	while (glfwWindowShouldClose(m_pRenderer->GetWindow()))
+	while (!glfwWindowShouldClose(m_pRenderer->GetWindow()))
 	{
 		m_pGameTime->Update();
 

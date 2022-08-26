@@ -8,7 +8,6 @@
 #include <vector>
 
 // library includes
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <imgui.h>
 #include <spdlog/spdlog.h>

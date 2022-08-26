@@ -1,7 +1,7 @@
 #pragma once
 #include "../pch.h"
-#include "GameTime.h"
 
+class GLFWwindow;
 class Renderer;
 class GameTime;
 
