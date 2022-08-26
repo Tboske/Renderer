@@ -32,10 +32,11 @@ Engine::~Engine()
 
 void Engine::Run()
 {
-	while (m_pRenderer->IsRunning())
+	while (glfwWindowShouldClose(m_pRenderer->GetWindow()))
 	{
 		//std::cout << glfwGetTime() << '\n';
 
+		
 
 		m_pRenderer->Update();
 	}
