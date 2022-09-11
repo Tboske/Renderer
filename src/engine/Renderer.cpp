@@ -37,6 +37,7 @@ void Renderer::Update()
     glClearColor(m_ClearColor.x * m_ClearColor.w, m_ClearColor.y * m_ClearColor.w, m_ClearColor.z * m_ClearColor.w, m_ClearColor.w);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    // render everything from the scenegraph
     RenderImGui();
 
     glfwSwapBuffers(m_pWindow);
