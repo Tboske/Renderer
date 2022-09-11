@@ -5,11 +5,16 @@
 class SceneManager
 {
 public:
-    SceneManager();
-    ~SceneManager();
+	SceneManager();
+	~SceneManager();
+	SceneManager(const SceneManager&)                = delete;
+	SceneManager(SceneManager&&) noexcept            = delete;
+	SceneManager& operator=(const SceneManager&)     = delete;
+	SceneManager& operator=(SceneManager&&) noexcept = delete;
+
+    
 
 
 private:
-
-    std::vector<int> m_Objects;
+	std::vector<int> m_Objects;
 };

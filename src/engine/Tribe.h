@@ -15,6 +15,7 @@ public:
 
 	void Run();
 
+
 private:
 	std::unique_ptr<Renderer> m_pRenderer;
 	std::unique_ptr<GameTime> m_pGameTime;
