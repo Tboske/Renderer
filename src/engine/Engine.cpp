@@ -4,7 +4,6 @@
 #include "GLFW/glfw3.h"
 #include "GameTime.h"
 #include "../hierarchy/SceneManager.h"
-#include <memory>
 
 
 void error_callback(int error, const char* description)

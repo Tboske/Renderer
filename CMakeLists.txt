@@ -15,6 +15,7 @@ target_include_directories("ImGui" PUBLIC ${IMGUI_PATH})
 file(GLOB SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/src/*.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/hierarchy/*.cpp
 )
 
 # add file list to project executable
