@@ -6,11 +6,11 @@ class Renderer;
 class GameTime;
 class SceneManager;
 
-class Engine
+class Tribe
 {
 public:
-	Engine();
-	~Engine();
+	Tribe();
+	~Tribe();
 
 
 	void Run();

@@ -2,7 +2,7 @@
 #include "../pch.h"
 
 class GLFWwindow;
-class Renderer
+class Renderer final
 {
 public:
     Renderer();

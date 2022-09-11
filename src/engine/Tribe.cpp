@@ -11,7 +11,7 @@ void error_callback(int error, const char* description)
 	spdlog::error("Error: {}\n", description);
 }
 
-Engine::Engine() 
+Tribe::Tribe() 
 	: m_pRenderer(nullptr)
 	, m_pGameTime(nullptr)
 	, m_pSceneManager(nullptr)
@@ -30,7 +30,7 @@ Engine::Engine()
 	glfwSetKeyCallback(m_pRenderer->GetWindow(), InputCallBack);
 }
 
-Engine::~Engine()
+Tribe::~Tribe()
 {
 	m_pSceneManager.reset();
 	m_pRenderer.reset();
@@ -39,7 +39,7 @@ Engine::~Engine()
 	glfwTerminate();
 }
 
-void Engine::Run()
+void Tribe::Run()
 {
 	while (!glfwWindowShouldClose(m_pRenderer->GetWindow()))
 	{
@@ -53,7 +53,7 @@ void Engine::Run()
 	}
 }
 
-void Engine::InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods)
+void Tribe::InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(pWindow, GLFW_TRUE);

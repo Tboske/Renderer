@@ -3,7 +3,7 @@
 
 int main(int argc, const char** args)
 {
-    Engine* pEngine{new Engine()};
+    Tribe* pEngine{new Tribe()};
     pEngine->Run();
     SafeDelete(pEngine);
 
