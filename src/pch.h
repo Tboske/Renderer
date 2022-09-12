@@ -2,6 +2,7 @@
 
 // stl includes
 #include <iostream>
+#include <algorithm>
 #include <memory>
 #include <string.h>
 #include <string_view>
