@@ -13,9 +13,9 @@ target_include_directories("ImGui" PUBLIC ${IMGUI_PATH})
 
 # add files to a list
 file(GLOB SOURCE_FILES
-    ${PROJECT_SOURCE_DIR}/src/*.cpp
-    ${PROJECT_SOURCE_DIR}/src/render/*.cpp
-    ${PROJECT_SOURCE_DIR}/src/hierarchy/*.cpp
+    ${PROJECT_SOURCE_DIR}/tribe/*.cpp
+    ${PROJECT_SOURCE_DIR}/tribe/render/*.cpp
+    ${PROJECT_SOURCE_DIR}/tribe/hierarchy/*.cpp
 )
 
 # add file list to project executable
@@ -35,7 +35,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 # precompiled header
-target_precompile_headers(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src/pch.cpp)
+target_precompile_headers(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/tribe/pch.cpp)
 set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON) # only works for clang
 
 # set standard to c++20

@@ -6,3 +6,13 @@ Scene::Scene(const std::string_view sceneName)
 {
 
 }
+
+void Scene::Update()
+{
+
+}
+
+void Scene::Render() const
+{
+    
+}

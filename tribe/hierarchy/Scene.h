@@ -1,5 +1,6 @@
 #pragma once
 #include "../pch.h"
+#include "SceneManager.h"
 
 class Scene final
 {
@@ -16,4 +17,8 @@ public:
 
 private:
     std::string_view m_Name;
+
+    friend class SceneManager;
+    void Update();
+	void Render() const;
 };
