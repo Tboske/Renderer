@@ -1,9 +1,9 @@
 #include "Tribe.h"
 
-#include "Renderer.h"
+#include "render/Renderer.h"
 #include "GLFW/glfw3.h"
 #include "GameTime.h"
-#include "../hierarchy/SceneManager.h"
+#include "hierarchy/SceneManager.h"
 
 
 void error_callback(int error, const char* description)

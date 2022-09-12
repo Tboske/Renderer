@@ -1,4 +1,4 @@
-#include "engine/Tribe.h"
+#include "Tribe.h"
 
 
 int main(int argc, const char** args)
