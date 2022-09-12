@@ -12,6 +12,7 @@ public:
 	Tribe();
 	~Tribe();
 
+	// loadgame needs to become pure virtual 
 	virtual void LoadGame();
 	void Run();
 
