@@ -26,6 +26,7 @@ public:
 
 private:
 	std::vector<std::unique_ptr<Scene>> m_pScenes;
+	int m_ActiveSceneIdx;
 	
 	friend class Tribe;
 	void Update();
