@@ -1,10 +1,5 @@
 #pragma once
-
-
-#include <memory>
-#include <string>
-#include <string_view>
-#include <vector>
+#include "../pch.h"
 
 class Scene;
 class SceneManager final
@@ -17,12 +12,12 @@ public:
 	SceneManager& operator=(const SceneManager&)     = delete;
 	SceneManager& operator=(SceneManager&&) noexcept = delete;
 
-    Scene* AddScene(const std::string_view& sceneName);
-	Scene* GetScene(const std::string_view& sceneName) const;
-	Scene* GetScene(int sceneID) const;
+    Scene* AddScene(const std::string_view sceneName);
+	Scene* GetScene(const std::string_view sceneName) const;
+	Scene* GetScene(size_t sceneID) const;
 	Scene* GetActiveScene() const;
-	void ActivateScene(int sceneID);
-	void ActivateScene(const std::string_view& sceneName);
+	void ActivateScene(size_t sceneID);
+	void ActivateScene(const std::string_view sceneName);
 
 private:
 	std::vector<std::unique_ptr<Scene>> m_pScenes;
