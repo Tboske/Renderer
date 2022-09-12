@@ -39,8 +39,15 @@ Tribe::~Tribe()
 	glfwTerminate();
 }
 
+void Tribe::LoadGame() 
+{
+    
+}
+
 void Tribe::Run()
 {
+	LoadGame();
+
 	while (!glfwWindowShouldClose(m_pRenderer->GetWindow()))
 	{
 		m_pGameTime->Update();

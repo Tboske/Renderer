@@ -12,7 +12,7 @@ public:
 	Tribe();
 	~Tribe();
 
-
+	virtual void LoadGame();
 	void Run();
 
 
