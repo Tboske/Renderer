@@ -7,6 +7,7 @@
 #include <vector>
 
 SceneManager::SceneManager()
+	: m_ActiveSceneIdx(0)
 {
 }
 
@@ -19,13 +20,21 @@ Scene* SceneManager::AddScene(const std::string_view sceneName)
 	if (sceneName.empty())
 		throw "Provided parameter (sceneName) is invalid.";
 
-	return m_pScenes.emplace_back(/*std::make_unique(sceneName)*/).get();
+	return m_pScenes.emplace_back(std::make_unique<Scene>(sceneName)).get();
 }
 
 Scene* SceneManager::GetScene(const std::string_view sceneName) const
 {
-	const auto& foundIt = std::ranges::find_if(
-	    m_pScenes, [&sceneName](const std::unique_ptr<Scene>& pScene) { return sceneName == pScene->GetName(); });
+	if (m_pScenes.empty())
+		throw "No scenes have been added yet.";
+
+	// search for the scene
+	const auto& foundIt = std::ranges::find_if(m_pScenes, 
+		[&sceneName](const std::unique_ptr<Scene>& pScene) 
+		{ 
+			return sceneName == pScene->GetName(); 
+		}
+	);
 
 	if (foundIt == m_pScenes.cend())
 		throw "Couldn't find parameter (sceneName) in m_pScenes.";
@@ -35,6 +44,9 @@ Scene* SceneManager::GetScene(const std::string_view sceneName) const
 
 Scene* SceneManager::GetScene(size_t sceneID) const
 {
+	if (m_pScenes.empty())
+		throw "No scenes have been added yet.";
+
 	if (sceneID >= m_pScenes.size())
 		throw "Provided parameter (sceneID) is invalid.";
 
@@ -43,11 +55,17 @@ Scene* SceneManager::GetScene(size_t sceneID) const
 
 Scene* SceneManager::GetActiveScene() const
 {
+	if (m_pScenes.empty())
+		throw "No scenes have been added yet.";
+
 	return m_pScenes[m_ActiveSceneIdx].get();
 }
 
 void SceneManager::ActivateScene(size_t sceneID)
 {
+	if (m_pScenes.empty())
+		throw "No scenes have been added yet.";
+
 	if (sceneID >= m_pScenes.size())
 		throw "Provided parameter (sceneID) is invalid.";
 
@@ -56,6 +74,9 @@ void SceneManager::ActivateScene(size_t sceneID)
 
 void SceneManager::ActivateScene(const std::string_view sceneName)
 {
+	if (m_pScenes.empty())
+		throw "No scenes have been added yet.";
+
 	if (sceneName.empty())
 		throw "Provided parameter (sceneName) is invalid.";
 
