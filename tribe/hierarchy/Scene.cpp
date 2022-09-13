@@ -1,17 +1,9 @@
 #include "Scene.h"
+#include "BaseObject.h"
 
 Scene::Scene(const std::string_view sceneName)
-    : m_Name(sceneName)
+    : BaseObject(sceneName)
 {
 
 }
 
-void Scene::Update()
-{
-
-}
-
-void Scene::Render() const
-{
-
-}
