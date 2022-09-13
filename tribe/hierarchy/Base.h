@@ -3,16 +3,15 @@
 
 
 class GameObject;
-class BaseObject
+class Base
 {
 public:
-    BaseObject(const std::string_view name);
-    virtual ~BaseObject() = default;
-    BaseObject(const BaseObject&) = delete;
-    BaseObject(BaseObject&&) noexcept  = delete;
-    BaseObject& operator=(const BaseObject&) = delete;
-    BaseObject& operator=(BaseObject&&) noexcept  = delete;
-    
+    Base(const std::string_view);
+    virtual ~Base() = default;
+    Base(const Base&) = delete;
+    Base(Base&&) noexcept  = delete;
+    Base& operator=(const Base&) = delete;
+    Base& operator=(Base&&) noexcept  = delete;    
 
     GameObject* AddGameObject(const std::string_view name);
 	GameObject* GetGameObject(const std::string_view name) const;

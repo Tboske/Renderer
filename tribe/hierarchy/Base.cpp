@@ -1,28 +1,28 @@
-#include "BaseObject.h"
+#include "Base.h"
 //#include "GameObject.h"
 
-BaseObject::BaseObject(const std::string_view name)
+Base::Base(const std::string_view name)
     : m_Name(std::move(name))
 {
 
 }
 
-void BaseObject::Update()
+void Base::Update()
 {
     
 }
 
-void BaseObject::Render() const
+void Base::Render() const
 {
     
 }
 
-GameObject* BaseObject::AddGameObject(const std::string_view objectName)
+GameObject* Base::AddGameObject(const std::string_view objectName)
 {
 
 }
 
-GameObject* BaseObject::GetGameObject(const std::string_view objectName) const
+GameObject* Base::GetGameObject(const std::string_view objectName) const
 {
     const auto& fountIt = std::ranges::find(m_pChildren, [&objectName](GameObject const& name)
     {
