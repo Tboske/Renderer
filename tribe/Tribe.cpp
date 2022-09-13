@@ -4,6 +4,9 @@
 #include "GLFW/glfw3.h"
 #include "GameTime.h"
 #include "hierarchy/SceneManager.h"
+#include "hierarchy/Scene.h"
+#include "hierarchy/GameObject.h"
+#include <spdlog/spdlog.h>
 
 
 void error_callback(int error, const char* description)
@@ -41,7 +44,11 @@ Tribe::~Tribe()
 
 void Tribe::LoadGame() 
 {
-    
+	const auto pScene = m_pSceneManager->AddScene("StartScene");
+	spdlog::info("The first scenes name is: {}", pScene->GetName());
+
+	const auto pGameObject = pScene->AddGameObject("NewObject");
+	spdlog::info("The first gameobjects name is: {}", pGameObject->GetName());
 }
 
 void Tribe::Run()
