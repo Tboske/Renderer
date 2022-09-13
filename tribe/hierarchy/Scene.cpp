@@ -1,9 +1,8 @@
 #include "Scene.h"
-#include "BaseObject.h"
+#include "Base.h"
 
 Scene::Scene(const std::string_view sceneName)
-    : BaseObject(sceneName)
+    : Base(sceneName)
 {
 
 }
-

@@ -1,9 +1,9 @@
 #pragma once
 #include "../pch.h"
-#include "BaseObject.h"
+#include "Base.h"
 
 class GameObject;
-class Scene final : public BaseObject
+class Scene final : public Base
 {
 public:
 	Scene(const std::string_view sceneName);
