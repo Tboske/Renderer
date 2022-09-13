@@ -7,7 +7,7 @@ class Scene final : public Base
 {
 public:
 	Scene(const std::string_view sceneName);
-	~Scene()                           = default;
+	virtual ~Scene() override          = default;
 	Scene(const Scene&)                = delete;
 	Scene(Scene&&) noexcept            = delete;
 	Scene& operator=(const Scene&)     = delete;
