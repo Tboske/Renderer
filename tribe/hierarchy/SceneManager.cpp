@@ -28,7 +28,7 @@ Scene* SceneManager::GetScene(const std::string_view sceneName) const
 	    m_pScenes, [&sceneName](const std::unique_ptr<Scene>& pScene) { return sceneName == pScene->GetName(); });
 
 	if (foundIt == m_pScenes.cend())
-		throw "Couldn't find parameter (sceneName) in m_pScenes";
+		throw "Couldn't find parameter (sceneName) in m_pScenes.";
 
 	return foundIt->get();
 }
