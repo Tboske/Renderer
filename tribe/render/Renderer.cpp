@@ -11,7 +11,7 @@ Renderer::Renderer()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     m_pWindow = glfwCreateWindow(1280, 720, "Testing Window", NULL, NULL);
     if (!m_pWindow)
-        std::cout << "Failed to create window\n";
+        throw "Failed to initialize window";        
 
     glfwMakeContextCurrent(m_pWindow);
     glfwSwapInterval(1); // enable vsync
