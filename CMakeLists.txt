@@ -6,7 +6,11 @@ project(tester VERSION 0.0.1)
 set(IMGUI_PATH  "libs/imgui")
     
 # Compile as static library 
-file(GLOB IMGUI_SOURCES ${IMGUI_PATH}/*.cpp) 
+file(GLOB IMGUI_SOURCES 
+    ${IMGUI_PATH}/*.cpp
+    ${IMGUI_PATH}/backends/imgui_impl_opengl3.cpp    
+    ${IMGUI_PATH}/backends/imgui_impl_glfw.cpp    
+) 
 add_library("ImGui" STATIC ${IMGUI_SOURCES})
 target_include_directories("ImGui" PUBLIC ${IMGUI_PATH})
 

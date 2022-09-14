@@ -29,7 +29,7 @@ GameObject* Base::AddChild(const std::string_view objectName)
     return m_pChildren.emplace_back(std::make_unique<GameObject>(objectName)).get();
 }
 
-GameObject* Base::AddChild(std::shared_ptr<GameObject> pGameObject)
+void Base::AddChild(std::shared_ptr<GameObject> pGameObject)
 {
     if (!pGameObject.get())
         throw "pGameObject was a nullptr";

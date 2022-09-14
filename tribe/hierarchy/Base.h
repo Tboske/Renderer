@@ -13,7 +13,7 @@ public:
     Base& operator=(Base&&) noexcept  = delete;    
 
     GameObject* AddChild(const std::string_view name);
-    GameObject* AddChild(std::shared_ptr<GameObject> pGameObject);
+    void AddChild(std::shared_ptr<GameObject> pGameObject);
 	GameObject* GetChild(const std::string_view name) const;
     
     
@@ -28,6 +28,6 @@ protected:
     virtual void Update();
     virtual void Render() const;
 
-private:
+    // make sure the Base class can't be constructed
     Base(const std::string_view);
 };
