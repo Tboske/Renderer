@@ -1,10 +1,12 @@
 #pragma once
 #include "pch.h"
+#include <memory>
 
 class GLFWwindow;
-class Renderer;
+class Window;
 class GameTime;
 class SceneManager;
+class Renderer;
 
 class Tribe
 {

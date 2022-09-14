@@ -1,12 +1,11 @@
 #include "Tribe.h"
 
 #include "render/Renderer.h"
-#include "GLFW/glfw3.h"
 #include "GameTime.h"
 #include "hierarchy/SceneManager.h"
 #include "hierarchy/Scene.h"
 #include "hierarchy/GameObject.h"
-#include <spdlog/spdlog.h>
+#include "GLFW/glfw3.h"
 
 
 void error_callback(int error, const char* description)
@@ -14,10 +13,7 @@ void error_callback(int error, const char* description)
 	spdlog::error("Error: {}\n", description);
 }
 
-Tribe::Tribe() 
-	: m_pRenderer(nullptr)
-	, m_pGameTime(nullptr)
-	, m_pSceneManager(nullptr)
+Tribe::Tribe()
 {
 	spdlog::set_level(spdlog::level::debug);
 
@@ -36,8 +32,8 @@ Tribe::Tribe()
 Tribe::~Tribe()
 {
 	m_pSceneManager.reset();
-	m_pRenderer.reset();
 	m_pGameTime.reset();
+	m_pRenderer.reset();
 
 	glfwTerminate();
 }
@@ -63,7 +59,7 @@ void Tribe::Run()
 
 		// draw
 		
-		m_pRenderer->Update();
+		m_pRenderer->Draw();
 	}
 }
 
