@@ -6,18 +6,19 @@ class GameObject;
 class Base
 {
 public:
-    Base(const std::string_view);
     virtual ~Base() = default;
     Base(const Base&) = delete;
     Base(Base&&) noexcept  = delete;
     Base& operator=(const Base&) = delete;
     Base& operator=(Base&&) noexcept  = delete;    
 
-    GameObject* AddGameObject(const std::string_view name);
-	GameObject* GetGameObject(const std::string_view name) const;
+    GameObject* AddChild(const std::string_view name);
+    GameObject* AddChild(std::shared_ptr<GameObject> pGameObject);
+	GameObject* GetChild(const std::string_view name) const;
+    
+    
 
-
-    const std::string_view GetName() const { return m_Name; };
+    const std::string_view& GetName() const { return m_Name; };
 
 
 protected:
@@ -26,4 +27,7 @@ protected:
     
     virtual void Update();
     virtual void Render() const;
+
+private:
+    Base(const std::string_view);
 };
