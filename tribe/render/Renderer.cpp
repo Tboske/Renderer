@@ -48,9 +48,6 @@ public:
     virtual void InitImGui() override;
     virtual void DestroyImGui() override;
     virtual void RenderImGui() override;
-
-private:
-
 };
 
 void RendererOpengl3::Draw()
@@ -134,8 +131,10 @@ void RendererOpengl3::RenderImGui()
 #pragma endregion
 
 
+
 #pragma region Renderer
-Renderer::Renderer()
+Renderer::Renderer(RenderType renderType)
+    : m_RenderType(renderType)
 {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -146,7 +145,15 @@ Renderer::Renderer()
     glfwMakeContextCurrent(m_pWindow);
     glfwSwapInterval(1); // enable vsync
 
-    m_pImpl = new RendererOpengl3(this);
+    switch (m_RenderType) 
+    {
+    case RenderType::Opengl3:
+        m_pImpl = new RendererOpengl3(this);
+        break;
+    case RenderType::Vulkan:
+
+        break;
+    }
 
     m_pImpl->InitImGui();
 }

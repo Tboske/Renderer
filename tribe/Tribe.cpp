@@ -22,7 +22,7 @@ Tribe::Tribe()
 	if (!glfwInit())
 		spdlog::critical("Failed to Init glfw3");
 
-	m_pRenderer = std::make_unique<Renderer>();
+	m_pRenderer = std::make_unique<Renderer>(RenderType::Opengl3);
 	m_pGameTime = std::make_unique<GameTime>();
 	m_pSceneManager = std::make_unique<SceneManager>();
 

@@ -11,7 +11,7 @@ class GLFWwindow;
 class Renderer final
 {
 public:
-    Renderer();
+    Renderer(RenderType renderType);
     ~Renderer();
     Renderer(const Renderer&) = delete;
     Renderer(Renderer&&) noexcept  = delete;
@@ -29,6 +29,8 @@ protected:
 private:
     class RendererImpl;
     RendererImpl* m_pImpl;
+
+    RenderType m_RenderType;
 
     // we need to friend all rendererImpl for them to be able to inherit from RendererImpl
     friend class RendererOpengl3;
