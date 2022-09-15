@@ -26,7 +26,7 @@ GameObject* Base::AddChild(const std::string_view objectName)
     if (objectName.empty()) 
         throw "Provided objectName is empty";    
 
-    return m_pChildren.emplace_back(std::make_unique<GameObject>(objectName)).get();
+    return m_pChildren.emplace_back(std::make_unique<GameObject>(this, objectName)).get();
 }
 
 void Base::AddChild(std::shared_ptr<GameObject> pGameObject)

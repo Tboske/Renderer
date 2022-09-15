@@ -1,9 +1,28 @@
 #include "GameObject.h"
-#include "Base.h"
-#include "GameObject.h"
+#include "components/Component.h"
+#include "components/RenderComponent.h"
 
-GameObject::GameObject(const std::string_view objectName)
+GameObject::GameObject(Base* pParent, const std::string_view objectName)
     : Base(objectName)
+    , m_pParent(pParent)
 {
     
+}
+
+void GameObject::Render() const
+{
+    if (const RenderComponent* const comp = GetComponent<RenderComponent>())
+		comp->Render();
+
+    // calls Render on child objects
+    Base::Render();
+}
+
+void GameObject::Update() 
+{
+	for (const auto& [type, pComponent] : m_pComponents)
+		pComponent->Update();
+
+	// calls Update on child objects
+	Base::Update();
 }
