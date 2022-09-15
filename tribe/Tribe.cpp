@@ -1,5 +1,6 @@
 #include "Tribe.h"
 
+#include "hierarchy/components/RenderComponent.h"
 #include "render/Renderer.h"
 #include "GameTime.h"
 #include "hierarchy/SceneManager.h"
@@ -45,6 +46,9 @@ void Tribe::LoadGame()
 
 	const auto pGameObject = pScene->AddChild("NewObject");
 	spdlog::info("The first gameobjects name is: {}", pGameObject->GetName());
+
+	pGameObject->AddComponent<RenderComponent>(new RenderComponent(pGameObject));
+
 }
 
 void Tribe::Run()
