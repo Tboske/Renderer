@@ -7,6 +7,8 @@ I wasn't satisfied with the last version. Due to bad design choices in some plac
 ## Why a revision?
 After finishing Tribe 1.0 for my school project, I came to the conclusion there were some problems and mistakes. I had many ideas in my mind on how to fix these problems and mistakes, but that would've taken a whole overhaul of the engine. So instead of altering all the existing code, I chose to revision the engine. I wanted to take the opportunity to challange myself and research more on certain aspects. Eventually I chose to move from SDL2 to GLFW, but not only that, I wanted to make it "hot"-reloadable between opengl and vulkan. 
 
+In comparison to Tribe 1.0, Tribe 2.0 will have cross platform due to development with Cmake. This was yet another challange, since I've never used Cmake before.
+
 This project was mainly aimed to test my programming skills, but also to broaden my knowledge about more libraries.
 
 ### From `Windows + vs22 + vcpkg` To `linux + vscode`
@@ -24,3 +26,5 @@ In Tribe 1.0 I avoided smart pointers in certain parts of the code. Since then, 
 
 ### Extra features
 I also laid out a challange for me in Tribe 2.0. I aimed to try and make the engine "hot"-reloadable between multiple renderers. For the moment Tribe 2.0 will only support opengl3 and vulkan, but there might be more to come.
+
+There are plans on adding an editor aswell.
