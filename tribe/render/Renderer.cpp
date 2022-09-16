@@ -63,6 +63,7 @@ void RendererOpengl3::Draw()
 
     // render everything from the scenegraph
     RenderImGui();
+    
 
     glfwSwapBuffers(m_pBaseRenderer->m_pWindow);
     glfwPollEvents();

@@ -2,11 +2,12 @@
 #include "../../pch.h"
 #include "Component.h"
 
+class Renderer;
 class TransformComponent;
 class RenderComponent final : public Component
 {
 public:
-    RenderComponent(GameObject* pGo, TransformComponent* pTransform);
+    RenderComponent(GameObject* pGo, TransformComponent* pTransform, Renderer* pRenderer);
     virtual ~RenderComponent() override;
     RenderComponent(const RenderComponent&) = delete;
     RenderComponent(RenderComponent&&) noexcept  = delete;
@@ -18,6 +19,7 @@ public:
     
 private:
     TransformComponent* m_pTransform;
+    Renderer* m_pRenderer;
 
     glm::vec2 m_Center;
 };

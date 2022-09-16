@@ -9,7 +9,6 @@
 #include "hierarchy/GameObject.h"
 #include "GLFW/glfw3.h"
 
-
 void error_callback(int error, const char* description)
 {
 	spdlog::error("Error: {}\n", description);
@@ -47,7 +46,7 @@ void Tribe::LoadGame()
 	const auto pGameObject = pScene->AddChild("NewObject");
 
 	const auto pTrans = pGameObject->AddComponent<TransformComponent>(glm::vec3{50,30,2});
-	pGameObject->AddComponent<RenderComponent>(pTrans);
+	pGameObject->AddComponent<RenderComponent>(pTrans, m_pRenderer.get());
 }
 
 void Tribe::Run()
@@ -58,12 +57,11 @@ void Tribe::Run()
 	{
 		m_pGameTime->Update();
 
-		// process input
-
 		// update scene
-		m_pSceneManager->Update();
+		m_pSceneManager->Update();	
 		
 		// draw
+		m_pSceneManager->Render();
 		m_pRenderer->Draw();
 
 		// sleep thread
