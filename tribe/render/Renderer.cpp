@@ -143,7 +143,7 @@ Renderer::Renderer(RenderType renderType)
         throw "Failed to initialize window";        
 
     glfwMakeContextCurrent(m_pWindow);
-    glfwSwapInterval(1); // enable vsync
+    glfwSwapInterval(0); // enable vsync
 
     switch (m_RenderType) 
     {

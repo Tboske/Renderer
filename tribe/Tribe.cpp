@@ -1,6 +1,7 @@
 #include "Tribe.h"
 
 #include "hierarchy/components/RenderComponent.h"
+#include "hierarchy/components/TransformComponent.h"
 #include "render/Renderer.h"
 #include "GameTime.h"
 #include "hierarchy/SceneManager.h"
@@ -47,6 +48,7 @@ void Tribe::LoadGame()
 	const auto pGameObject = pScene->AddChild("NewObject");
 	spdlog::info("The first gameobjects name is: {}", pGameObject->GetName());
 
+	pGameObject->AddComponent<TransformComponent>(new TransformComponent(pGameObject, {0,0,0}));
 	pGameObject->AddComponent<RenderComponent>(new RenderComponent(pGameObject));
 
 }
@@ -59,11 +61,16 @@ void Tribe::Run()
 	{
 		m_pGameTime->Update();
 
+		// process input
 
-
-		// draw
+		// update scene
+		m_pSceneManager->Update();
 		
+		// draw
 		m_pRenderer->Draw();
+
+		// sleep thread
+		std::this_thread::sleep_for(std::chrono::duration<double>(m_pGameTime->GetSleepTime()));
 	}
 }
 
