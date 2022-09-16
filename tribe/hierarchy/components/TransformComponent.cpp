@@ -9,7 +9,7 @@ TransformComponent::TransformComponent(GameObject* pGo,  const glm::vec3& pos)
 
 void TransformComponent::Update()
 {
-
+    
 }
 
 void TransformComponent::SetPosition(const glm::vec3& position)

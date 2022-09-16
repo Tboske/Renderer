@@ -15,16 +15,13 @@ public:
     GameObject& operator=(const GameObject&) = delete;
     GameObject& operator=(GameObject&&) noexcept  = delete;
     
-    template <typename T, 
-        typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
-    T* AddComponent(T* pComponent);
+    template <typename T, typename... Args, typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
+    T* AddComponent(Args&&... args);
 
-	template <typename T, 
-        typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
+	template <typename T, typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
     T* GetComponent() const;
 
-	template <typename T, 
-        typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
+	template <typename T, typename =  std::enable_if_t<std::is_base_of<Component, T>::value>> 
     void RemoveComponent();
 
 protected:
@@ -40,16 +37,15 @@ private:
 };
 
 #pragma region TemplateImplementations
-template <typename T, 
-    typename> 
-T* GameObject::AddComponent(T* pComponent)
+template <typename T, typename... Args, typename> 
+T* GameObject::AddComponent(Args&&... args)
 {
-	m_pComponents[&typeid(T)] = pComponent;
-	return pComponent;
+    const auto pComp = new T(this, std::forward<Args>(args)...);
+	m_pComponents[&typeid(T)] = pComp;
+	return pComp;
 }
 
-template <typename T, 
-    typename> 
+template <typename T, typename> 
 T* GameObject::GetComponent() const
 {
 	const auto d = &typeid(T);
@@ -61,8 +57,7 @@ T* GameObject::GetComponent() const
 	return nullptr;
 }
 
-template <typename T,
-    typename>
+template <typename T, typename>
 void GameObject::RemoveComponent()
 {
 	T* comp = static_cast<T*>(m_pComponents.at(&typeid(T)));

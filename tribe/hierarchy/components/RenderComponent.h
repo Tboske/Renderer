@@ -1,10 +1,12 @@
 #pragma once
+#include "../../pch.h"
 #include "Component.h"
 
+class TransformComponent;
 class RenderComponent final : public Component
 {
 public:
-    RenderComponent(GameObject* pGo);
+    RenderComponent(GameObject* pGo, TransformComponent* pTransform);
     virtual ~RenderComponent() override;
     RenderComponent(const RenderComponent&) = delete;
     RenderComponent(RenderComponent&&) noexcept  = delete;
@@ -15,5 +17,7 @@ public:
     void Render() const;
     
 private:
-    
+    TransformComponent* m_pTransform;
+
+    glm::vec2 m_Center;
 };

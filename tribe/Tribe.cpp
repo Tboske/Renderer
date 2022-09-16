@@ -43,14 +43,11 @@ Tribe::~Tribe()
 void Tribe::LoadGame() 
 {
 	const auto pScene = m_pSceneManager->AddScene("StartScene");
-	spdlog::info("The first scenes name is: {}", pScene->GetName());
 
 	const auto pGameObject = pScene->AddChild("NewObject");
-	spdlog::info("The first gameobjects name is: {}", pGameObject->GetName());
 
-	pGameObject->AddComponent<TransformComponent>(new TransformComponent(pGameObject, {0,0,0}));
-	pGameObject->AddComponent<RenderComponent>(new RenderComponent(pGameObject));
-
+	const auto pTrans = pGameObject->AddComponent<TransformComponent>(glm::vec3{50,30,2});
+	pGameObject->AddComponent<RenderComponent>(pTrans);
 }
 
 void Tribe::Run()
