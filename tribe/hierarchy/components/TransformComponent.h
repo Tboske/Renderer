@@ -17,6 +17,9 @@ public:
     void SetPosition(const glm::vec3& position);
     void SetAbsolutePosition(const glm::vec3& absolutePosition);
 
+    glm::vec3 GetAbsolutePosition() const { return m_AbsolutePosition + m_RelativePosition; }
+    glm::vec3& GetRelativePosition() { return m_RelativePosition; }
+
 protected:
     void UpdateAbsolutePosition(const glm::vec3& absolutePosition);
 
