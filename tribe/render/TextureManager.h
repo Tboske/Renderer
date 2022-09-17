@@ -25,5 +25,5 @@ public:
 private:
     std::string_view m_Directory;
 
-    std::unordered_map<std::string_view, Texture> m_Textures;
+    std::unordered_map<std::string_view, Texture*> m_Textures;
 };
