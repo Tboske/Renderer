@@ -9,6 +9,7 @@
 #include <vector>
 
 // library includes
+#include <GL/gl.h>
 #include <glm/glm.hpp>
 #include <imgui.h>
 #include <spdlog/spdlog.h>

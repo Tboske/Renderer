@@ -4,6 +4,7 @@ project(tester VERSION 0.0.1)
 # imgui compile
 # Set where the ImGui files are stored
 set(IMGUI_PATH  "libs/imgui")
+set(STB_PATH "libs/stb")
     
 # Compile as static library 
 file(GLOB IMGUI_SOURCES 
@@ -12,7 +13,10 @@ file(GLOB IMGUI_SOURCES
     ${IMGUI_PATH}/backends/imgui_impl_glfw.cpp    
 ) 
 add_library("ImGui" STATIC ${IMGUI_SOURCES})
-target_include_directories("ImGui" PUBLIC ${IMGUI_PATH})
+target_include_directories("ImGui" PUBLIC 
+    ${IMGUI_PATH}
+    ${STB_PATH}
+)
 
 
 # add files to a list
