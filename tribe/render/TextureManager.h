@@ -19,7 +19,7 @@ public:
     TextureManager& operator=(const TextureManager&) = delete;
     TextureManager& operator=(TextureManager&&) noexcept  = delete;
     
-    Texture LoadTexture(const std::string_view path);
+    Texture* LoadTexture(const std::string_view path);
     
     
 private:

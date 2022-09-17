@@ -9,10 +9,11 @@ TextureManager::TextureManager(const std::string_view directory)
 
 }
 
-Texture TextureManager::LoadTexture(const std::string_view path)
+Texture* TextureManager::LoadTexture(const std::string_view path)
 {
     auto& texture = m_Textures[path];
-
+    if (texture) 
+        return texture;
 
     // make the texture in openGL
     glGenTextures(1, &texture->data);
@@ -39,5 +40,5 @@ Texture TextureManager::LoadTexture(const std::string_view path)
     // cleanup the raw image data
     stbi_image_free(rawData);
 
-    return *texture;
+    return texture;
 }
