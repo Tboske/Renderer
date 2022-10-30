@@ -1,5 +1,5 @@
 #pragma once
-#include "../pch.h"
+#include "pch.h"
 
 struct Texture
 {
@@ -9,7 +9,7 @@ struct Texture
     int nrChannels;
 };
 
-class TextureManager final 
+class TextureManager final
 {
 public:
     TextureManager(const std::string_view directory);

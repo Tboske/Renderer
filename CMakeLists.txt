@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(tester VERSION 0.0.1)
+# makes sure we dont have to use ../../ for relative includes
+include_directories(${PROJECT_SOURCE_DIR}/tribe)
+
 
 # imgui compile
 # Set where the ImGui files are stored
