@@ -14,6 +14,9 @@
 #include <imgui.h>
 #include <spdlog/spdlog.h>
 
+// engine includes
+#include "utils/Locator.h"
+
 
 template<class T>
 inline void SafeDelete(T* pObjectToDelete)
