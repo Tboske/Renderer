@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include <memory>
 
 class GLFWwindow;
 class Window;
@@ -25,4 +24,6 @@ private:
 	std::unique_ptr<SceneManager> m_pSceneManager;
 
 	static void InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods);
+	void Initialize();
+	void Cleanup();
 };

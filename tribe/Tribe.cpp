@@ -8,8 +8,9 @@
 #include "hierarchy/Scene.h"
 #include "hierarchy/GameObject.h"
 #include "GLFW/glfw3.h"
+#include "render/TextureManager.h"
 
-void error_callback(int error, const char* description)
+void errorCallback(int error, const char* description)
 {
 	spdlog::error("Error: {}\n", description);
 }
@@ -18,7 +19,7 @@ Tribe::Tribe()
 {
 	spdlog::set_level(spdlog::level::debug);
 
-	glfwSetErrorCallback(error_callback);
+	glfwSetErrorCallback(errorCallback);
 
 	if (!glfwInit())
 		spdlog::critical("Failed to Init glfw3");
@@ -47,10 +48,16 @@ void Tribe::LoadGame()
 
 	const auto pTrans = pGameObject->AddComponent<TransformComponent>(glm::vec3{50,30,2});
 	pGameObject->AddComponent<RenderComponent>(pTrans, m_pRenderer.get());
+
+
+	Locator<TextureManager>::Get()->LoadTexture("test.png");
 }
+
+
 
 void Tribe::Run()
 {
+	Initialize();
 	LoadGame();
 
 	while (!glfwWindowShouldClose(m_pRenderer->GetWindow()))
@@ -67,10 +74,23 @@ void Tribe::Run()
 		// sleep thread
 		std::this_thread::sleep_for(std::chrono::duration<double>(m_pGameTime->GetSleepTime()));
 	}
+	Cleanup();
 }
+
 
 void Tribe::InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(pWindow, GLFW_TRUE);
+}
+
+
+void Tribe::Initialize()
+{
+	Locator<TextureManager>::Set(std::make_unique<TextureManager>(""));
+}
+
+void Tribe::Cleanup()
+{
+	Locator<TextureManager>::Cleanup();
 }
