@@ -5,17 +5,13 @@ template <typename T>
 class Locator final 
 {
 public:
-	static void Set(std::unique_ptr<T> pService) 
+	static void Set(T* pService) 
 	{
-		m_pService = std::move(pService); 
+		m_pService = pService; 
 	}
 
-	static T* Get() { return m_pService.get(); }
+	static T* Get() { return m_pService; }
 
-	static void Cleanup() 
-	{ 
-		m_pService.reset();
-	}
 private:
-	static std::unique_ptr<T> m_pService;
+	inline static T* m_pService = nullptr;
 };

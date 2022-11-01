@@ -51,6 +51,7 @@ void Tribe::LoadGame()
 
 
 	Locator<TextureManager>::Get()->LoadTexture("test.png");
+	Locator<TextureManager>::Get()->LoadTexture("test2.png");
 }
 
 
@@ -87,10 +88,10 @@ void Tribe::InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action
 
 void Tribe::Initialize()
 {
-	Locator<TextureManager>::Set(std::make_unique<TextureManager>(""));
+	Locator<TextureManager>::Set(new TextureManager("resources/textures/"));
 }
 
 void Tribe::Cleanup()
 {
-	Locator<TextureManager>::Cleanup();
+	SafeDelete(Locator<TextureManager>::Get());
 }

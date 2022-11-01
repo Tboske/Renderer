@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(tester VERSION 0.0.1)
+project(Tribe2.0 VERSION 0.0.1)
 # makes sure we dont have to use ../../ for relative includes
 include_directories(${PROJECT_SOURCE_DIR}/tribe)
 
@@ -22,16 +22,31 @@ target_include_directories("ImGui" PUBLIC
 )
 
 
+
+
+
 # add files to a list
 file(GLOB SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/tribe/*.cpp
     ${PROJECT_SOURCE_DIR}/tribe/render/*.cpp
     ${PROJECT_SOURCE_DIR}/tribe/hierarchy/*.cpp
     ${PROJECT_SOURCE_DIR}/tribe/hierarchy/components/*.cpp
+    ${PROJECT_SOURCE_DIR}/tribe/utils/*.cpp
 )
 
 # add file list to project executable
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+
+# copy resource files
+add_custom_target(COPY_RESOURCES ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${PROJECT_SOURCE_DIR}/resources
+    ${PROJECT_BINARY_DIR}/resources
+    COMMENT "Copying resources into build"
+)
+add_dependencies(${PROJECT_NAME} COPY_RESOURCES)
+
 
 # libraries
 find_package(glm REQUIRED)

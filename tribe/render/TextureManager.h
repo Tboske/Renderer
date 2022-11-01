@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+#include "../pch.h"
 
 struct Texture
 {
@@ -13,7 +13,7 @@ class TextureManager final
 {
 public:
     TextureManager(const std::string_view directory);
-    ~TextureManager();
+    ~TextureManager() = default;
     TextureManager(const TextureManager&) = delete;
     TextureManager(TextureManager&&) noexcept  = delete;
     TextureManager& operator=(const TextureManager&) = delete;
@@ -23,7 +23,8 @@ public:
     
     
 private:
-    std::string_view m_Directory;
+    std::string m_Directory;
 
-    std::unordered_map<std::string_view, Texture*> m_Textures;
+    using TextureMap = std::unordered_map<std::string_view, Texture>;
+    TextureMap m_Textures;
 };
