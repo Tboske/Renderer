@@ -12,7 +12,7 @@ set(STB_PATH "libs/stb")
 # Compile as static library 
 file(GLOB IMGUI_SOURCES 
     ${IMGUI_PATH}/*.cpp
-    ${IMGUI_PATH}/backends/imgui_impl_opengl3.cpp    
+    ${IMGUI_PATH}/backends/imgui_impl_vulkan.cpp    
     ${IMGUI_PATH}/backends/imgui_impl_glfw.cpp    
 ) 
 add_library("ImGui" STATIC ${IMGUI_SOURCES})
@@ -51,12 +51,12 @@ add_dependencies(${PROJECT_NAME} COPY_RESOURCES)
 # libraries
 find_package(glm REQUIRED)
 find_package(glfw3 3.3 REQUIRED)
-find_package(OpenGL REQUIRED)
+find_package(Vulkan REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    OpenGL::GL
+    Vulkan::Vulkan
     ImGui
     spdlog::spdlog_header_only
 )

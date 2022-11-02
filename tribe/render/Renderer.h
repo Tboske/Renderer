@@ -1,28 +1,21 @@
 #pragma once
 #include "pch.h"
 
-enum class RenderType
-{
-    Vulkan,
-    Opengl3
-};
-
-class GLFWwindow;
+class Window;
 class Renderer final
 {
 public:
-    Renderer(RenderType renderType);
+    Renderer(Window* pWindow);
     ~Renderer();
     Renderer(const Renderer&) = delete;
     Renderer(Renderer&&) noexcept  = delete;
     Renderer& operator=(const Renderer&) = delete;
     Renderer& operator=(Renderer&&) noexcept  = delete;
     
-    GLFWwindow* const GetWindow() const { return m_pWindow; }
     void Draw();
 
 protected:
-    GLFWwindow* m_pWindow;
+    Window* m_pWindow = nullptr;
 
     glm::fvec4 m_ClearColor{0.45f, 0.55f, 0.60f, 1.00f};
 
@@ -30,8 +23,7 @@ private:
     class RendererImpl;
     RendererImpl* m_pImpl;
 
-    RenderType m_RenderType;
 
     // we need to friend all rendererImpl for them to be able to inherit from RendererImpl
-    friend class RendererOpengl3;
+    friend class RendererVulkan;
 };

@@ -1,7 +1,6 @@
 #pragma once
 #include "pch.h"
 
-class GLFWwindow;
 class Window;
 class GameTime;
 class SceneManager;
@@ -20,10 +19,10 @@ public:
 
 private:
 	std::unique_ptr<Renderer> m_pRenderer;
+	std::unique_ptr<Window> m_pWindow;
 	std::unique_ptr<GameTime> m_pGameTime;
 	std::unique_ptr<SceneManager> m_pSceneManager;
 
-	static void InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods);
 	void Initialize();
 	void Cleanup();
 };
