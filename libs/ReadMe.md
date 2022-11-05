@@ -1,5 +1,5 @@
 Requires:
 - glfw3
-- opengl
+- vulken-devel
 - glm
 - spdlog

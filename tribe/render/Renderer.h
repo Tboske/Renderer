@@ -1,11 +1,11 @@
 #pragma once
 #include "pch.h"
 
-class Window;
+class GLFWwindow;
 class Renderer final
 {
 public:
-    Renderer(Window* pWindow);
+    Renderer(GLFWwindow* pWindow);
     ~Renderer();
     Renderer(const Renderer&) = delete;
     Renderer(Renderer&&) noexcept  = delete;
@@ -15,8 +15,8 @@ public:
     void Draw();
 
 protected:
-    Window* m_pWindow = nullptr;
-
+    // member variables accessible for implementations 
+    GLFWwindow* m_pWindow = nullptr;
     glm::fvec4 m_ClearColor{0.45f, 0.55f, 0.60f, 1.00f};
 
 private:

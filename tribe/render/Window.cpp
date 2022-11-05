@@ -14,18 +14,14 @@ Window::Window(std::string_view windowName)
 	if (!glfwInit())
 		spdlog::critical("Failed to Init glfw3");
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    m_pWindow = glfwCreateWindow(m_Size.x, m_Size.y, windowName.data(), NULL, NULL);
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
+    m_pWindow = glfwCreateWindow(m_Size.x, m_Size.y, windowName.data(), nullptr, nullptr);
     if (!m_pWindow)
         throw "Failed to initialize window";        
 
-    glfwMakeContextCurrent(m_pWindow);
-    glfwSwapInterval(0); // enable vsync
-
-
-    // this should still move to its own inputmanager
-	glfwSetKeyCallback(m_pWindow, InputCallBack);
+    // glfwSwapInterval(0); // enable vsync
 }
 
 Window::~Window()
@@ -40,8 +36,7 @@ bool Window::ShouldEnd() const
     return glfwWindowShouldClose(m_pWindow);
 }
 
-void Window::InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods)
+void Window::PollWindowEvents() const
 {
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(pWindow, GLFW_TRUE);
+    glfwPollEvents();
 }

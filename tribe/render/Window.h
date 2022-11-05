@@ -14,11 +14,10 @@ public:
     
     GLFWwindow* GetWindow() const { return m_pWindow; }
     bool ShouldEnd() const;
-    
+    void PollWindowEvents() const;
+
 private:
     glm::ivec2 m_Size{1280, 720};
+    
     GLFWwindow* m_pWindow;
-
-
-	static void InputCallBack(GLFWwindow* pWindow, int key, int scancode, int action, int mods);
 };

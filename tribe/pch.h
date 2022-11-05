@@ -18,7 +18,6 @@
 // engine includes
 #include "utils/Locator.h"
 
-
 template<class T>
 inline void SafeDelete(T* pObjectToDelete)
 {

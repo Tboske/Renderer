@@ -32,6 +32,7 @@ file(GLOB SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/tribe/hierarchy/*.cpp
     ${PROJECT_SOURCE_DIR}/tribe/hierarchy/components/*.cpp
     ${PROJECT_SOURCE_DIR}/tribe/utils/*.cpp
+    ${PROJECT_SOURCE_DIR}/tribe/core/*.cpp
 )
 
 # add file list to project executable

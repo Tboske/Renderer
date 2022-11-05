@@ -5,6 +5,7 @@ class Window;
 class GameTime;
 class SceneManager;
 class Renderer;
+class InputManager;
 
 class Tribe
 {
@@ -22,7 +23,4 @@ private:
 	std::unique_ptr<Window> m_pWindow;
 	std::unique_ptr<GameTime> m_pGameTime;
 	std::unique_ptr<SceneManager> m_pSceneManager;
-
-	void Initialize();
-	void Cleanup();
 };
