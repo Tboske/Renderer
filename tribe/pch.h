@@ -7,6 +7,7 @@
 #include <string.h>
 #include <string_view>
 #include <vector>
+#include <optional>
 
 
 // library includes
